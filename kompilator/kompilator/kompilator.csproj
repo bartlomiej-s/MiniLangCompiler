@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{51F0E64E-D974-4612-AAAD-CC78E21B8D74}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>kompilator</RootNamespace>
+    <AssemblyName>kompilator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="QUT.ShiftReduceParser">
+      <HintPath>..\..\gp\QUT.ShiftReduceParser.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Errors\ErrorType.cs" />
+    <Compile Include="Errors\ErrorData.cs" />
+    <Compile Include="Compiler.cs" />
+    <Compile Include="Parser\Parser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scanner\Scanner.cs" />
+    <Compile Include="Nodes\Symbols\Ident.cs" />
+    <Compile Include="Nodes\Values\StringVal.cs" />
+    <Compile Include="Nodes\Values\BoolVal.cs" />
+    <Compile Include="Nodes\Values\DoubleVal.cs" />
+    <Compile Include="Nodes\Values\IntVal.cs" />
+    <Compile Include="Nodes\Values\TypeVal.cs" />
+    <Compile Include="Nodes\Instructions\RetInst.cs" />
+    <Compile Include="Nodes\Instructions\OutInst.cs" />
+    <Compile Include="Nodes\Instructions\InInst.cs" />
+    <Compile Include="Nodes\Instructions\LoopInst.cs" />
+    <Compile Include="Nodes\Instructions\CondInst.cs" />
+    <Compile Include="Nodes\Instructions\ExpInst.cs" />
+    <Compile Include="Nodes\Instructions\BlockInst.cs" />
+    <Compile Include="Nodes\Symbols\Declaration.cs" />
+    <Compile Include="Nodes\SyntaxTree.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parser\ParserGenerator.bat" />
+    <None Include="Scanner\lexis.lex" />
+    <None Include="Parser\syntactics.y" />
+    <None Include="Scanner\ScannerGenerator.bat" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

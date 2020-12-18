@@ -1,0 +1,1 @@
+..\..\..\GP\Gppg.exe /gplex syntactics.y
